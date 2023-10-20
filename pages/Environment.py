@@ -31,6 +31,8 @@ def load_model():
 
 
 model = load_model()
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+model.to(device)
 
 model.eval()
 
@@ -54,7 +56,7 @@ class_labels = {
 def predict(img):
   start_time = time.time()
   img = preprocess(img)
-  prediction = torch.argmax(model(img.unsqueeze(0)),dim=1).item()
+  prediction = torch.argmax(model(img.unsqueeze(0).to(device)),dim=1).item()
   pred = class_labels[prediction]
   end_time = time.time()
 

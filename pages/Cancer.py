@@ -30,6 +30,8 @@ def load_model():
 
 
 model = load_model()
+device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
+model.to(device)
 
 model.eval()
 
@@ -50,7 +52,7 @@ image_url = st.text_input("Введите URL изображения для за
 def predict(img):
   start_time = time.time()
   img = preprocess(img)
-  prediction = torch.sigmoid(model(img.unsqueeze(0))).round().item()
+  prediction = torch.sigmoid(model(img.unsqueeze(0).to(device))).round().item()
   class_to_label = {0: 'benign', 1: 'malignant'}
   pred = class_to_label[prediction]
   end_time = time.time()
