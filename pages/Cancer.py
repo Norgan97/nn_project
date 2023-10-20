@@ -25,7 +25,7 @@ from io import BytesIO
 #model = model_two
 def load_model():
   model = model_two
-  model.load_state_dict(torch.load('pages/secondmodel/savemodeltwo.pt'))
+  model.load_state_dict(torch.load('pages/secondmodel/savemodeltwo.pt', map_location='cpu'))
   return model
 
 
