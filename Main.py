@@ -7,6 +7,12 @@ st.set_page_config(
 
 st.title('Вечер в хату, давайте приступим!')
 
+
+
+
 st.image('stcat.jpg')
+
+
+st.markdown('## Комманда: Львов Данил и Мустафина София')
 
 st.sidebar.success("Время выбора.")
